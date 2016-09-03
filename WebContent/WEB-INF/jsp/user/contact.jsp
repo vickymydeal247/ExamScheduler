@@ -31,10 +31,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <ul class="nav navbar-nav navbar-right"> 
                       <li>
-                          <a href="user/examSearch">Search Exam</a>
+                          <a href="examSearch">Search Exam</a>
                       </li> 
                        <li>
-                        <a href="user/login">Login</a>
+                        <a href="login">Login</a>
                        </li>
                   </ul>
                 </ul>

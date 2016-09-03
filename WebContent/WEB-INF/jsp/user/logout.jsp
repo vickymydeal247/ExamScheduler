@@ -48,13 +48,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right"> 
                     <li>
-                        <a href="user/examSearch">Search Exam</a>
+                        <a href="examSearch">Search Exam</a>
                     </li>
                     <li>
-                        <a href="user/addUser">Add User</a>
+                        <a href="addUser">Add User</a>
                     </li>  
                     <li>
-                        <a href="user/login">Login</a>
+                        <a href="login">Login</a>
                     </li>  
                 </ul>
             </div>

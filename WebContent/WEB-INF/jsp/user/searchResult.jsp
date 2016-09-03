@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right"> 
                     <li>
-                        <a href="user/addUser">Add User</a>
+                        <a href="addUser">Add User</a>
                     </li>   
                     <li>
-                        <a href="user/login">Login</a>
+                        <a href="login">Login</a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +63,7 @@
                 <td>${exam.fees}</td>
                 <td>${city}</td>
                 <td>
-                    <a href="user/register?id=${exam.examId}&city=${city}" >Register</a> 
+                    <a href="register?id=${exam.examId}&city=${city}" >Register</a> 
                 </td>       
                 </tr>
            </c:forEach> 

@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right"> 
                     <li>
-                        <a href="loginUser/userExamSearch">Search Exam</a>
+                        <a href="userExamSearch">Search Exam</a>
                     </li> 
                     <li>
-                        <a href="loginUser/userAddUser">Add User</a>
+                        <a href="addUser">Add User</a>
                     </li>
                     <li>
-                        <a href="user/logout">Logout</a>
+                        <a href="logout">Logout</a>
                     </li> 
                 </ul>
             </div>

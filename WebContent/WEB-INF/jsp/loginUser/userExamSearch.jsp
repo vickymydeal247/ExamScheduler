@@ -32,10 +32,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right"> 
                     <li>
-                        <a href="loginUser/userExamSearch">Search Exam</a>
+                        <a href="userExamSearch">Search Exam</a>
                     </li> 
                     <li>
-                        <a href="user/logout">Logout</a>
+                        <a href="logout">Logout</a>
                     </li> 
                 </ul>
             </div>
@@ -47,7 +47,7 @@
   <div class="container">
    <div class="bs-example">
     <br><br><br>
-    <form method="POST" action="/ExamScheduler/searchResult">
+    <form method="POST" action="/ExamScheduler/userSearchResult">
       <div class="form-group">
             <label for="courseId">Course</label> 
 			<select name="courseId" class="form-control" id="course" required>

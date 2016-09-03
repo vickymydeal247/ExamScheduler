@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right"> 
                     <li>
-                        <a href="user/examSearch">Search Exam</a>
+                        <a href="examSearch">Search Exam</a>
                     </li> 
                     <li>
-                        <a href="user/addExam">Add Exam</a>
+                        <a href="addExam">Add Exam</a>
                     </li> 
                 </ul>
             </div>

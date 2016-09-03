@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.portlet.ModelAndView;
 
 @Controller
 public class ExamController 
@@ -33,8 +31,8 @@ public class ExamController
 	}*/
 	
 	// index page
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView course(ModelMap model) {
+	@RequestMapping(value = {"/" ,"/index"}, method = RequestMethod.GET)
+	public String course(ModelMap model) {
 		
 		  List<Course> courseList = new ArrayList<Course>();
 		
@@ -42,39 +40,39 @@ public class ExamController
 
           model.addAttribute("courseList", courseList);
 		
-	      return new ModelAndView("index", "Index", new Course());
+	      return "user/index";
 	   }
 	
 	// mapping for non login users
 	
 	// search exam
-	@RequestMapping(value = "/user/examSearch", method = RequestMethod.GET)
-	public ModelAndView examSearch(ModelMap model) {
+	@RequestMapping(value = "/examSearch", method = RequestMethod.GET)
+	public String examSearch(ModelMap model) {
 		 
 		  List<Course> courseList = new ArrayList<Course>();
 		
 		               courseList = examDAOImpl.showCourse();
 		
 		  model.addAttribute("courseList", courseList);
-	      return new ModelAndView("user/examSearch", "Exam Search", new ExamSearch());
+	      return "user/examSearch";
 	   }
 	
 	
 	// mapping for about page  
-	@RequestMapping(value = "/user/about", method = RequestMethod.GET)
-	public ModelAndView about() {
-	      return new ModelAndView("user/about", "About", new ExamSearch());
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String about() {
+	      return "user/about";
 	   }
 	
 	// mapping for contact page
-	@RequestMapping(value = "/user/contact", method = RequestMethod.GET)
-	public ModelAndView contact() {
-	      return new ModelAndView("user/contact", "Contact", new ExamSearch());
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String contact() {
+	      return "user/contact";
 	   }
 	
 	// mapping for course exam showing on home page
-	@RequestMapping(value = "/user/courseExam", method = RequestMethod.GET)
-	public ModelAndView courseExam(@ModelAttribute("SpringWeb")User user, 
+	@RequestMapping(value = "/courseExam", method = RequestMethod.GET)
+	public String courseExam(@ModelAttribute("SpringWeb")User user, 
 			   ModelMap model, HttpServletRequest request) {
 		
 		  int courseId = Integer.parseInt(request.getParameter("id")); 
@@ -85,13 +83,13 @@ public class ExamController
 			
 			model.addAttribute("listExam", listExam);
 		  
-	      return new ModelAndView("user/courseExam", "Course Exam Id", new ExamSearch());
+	      return "user/courseExam";
 	   }
 	
 	// register
-	@RequestMapping(value = "/user/register", method = RequestMethod.GET)
-	public ModelAndView register() {
-	      return new ModelAndView("user/register", "Register", new Exam());
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register() {
+	      return "user/register";
 	   }
 	
 	// search result
@@ -127,9 +125,9 @@ public class ExamController
 	}
 	
 	// login
-		@RequestMapping(value = "/user/login", method = RequestMethod.GET)
-		public ModelAndView login() {
-		      return new ModelAndView("user/login", "Login", new User());
+		@RequestMapping(value = "/login", method = RequestMethod.GET)
+		public String login() {
+		      return "user/login";
 		   }
 	
 	// value processing for login
@@ -164,8 +162,8 @@ public class ExamController
 	// mapping for login users
 	
 	// home page
-	@RequestMapping(value = "/loginUser/userHome", method = RequestMethod.GET)
-	public ModelAndView userHome(ModelMap model) {
+	@RequestMapping(value = "/userHome", method = RequestMethod.GET)
+	public String userHome(ModelMap model) {
 		
 		  List<Course> courseList = new ArrayList<Course>();
 		
@@ -173,25 +171,25 @@ public class ExamController
 
           model.addAttribute("courseList", courseList);
 		
-	      return new ModelAndView("login/userHome", "User Home Page", new ExamSearch());
+	      return "loginUser/userHome";
 	   }
 	
 	// search exam
-		@RequestMapping(value = "/loginUser/userExamSearch", method = RequestMethod.GET)
-		public ModelAndView userExamSearch(ModelMap model) {
+		@RequestMapping(value = "/userExamSearch", method = RequestMethod.GET)
+		public String userExamSearch(ModelMap model) {
 			 
 			  List<Course> courseList = new ArrayList<Course>();
 			
 			               courseList = examDAOImpl.showCourse();
 			
 			  model.addAttribute("courseList", courseList);
-		      return new ModelAndView("loginUser/userExamSearch", "User Exam Search", new ExamSearch());
+		      return "loginUser/userExamSearch";
 		   }
 	
 	// course exam showing on home page
-	@RequestMapping(value = "/loginUser/userCourseExam", method = RequestMethod.GET)
-	public ModelAndView userCourseExam(@ModelAttribute("SpringWeb")User user, 
-			   ModelMap model, HttpRequest request) {
+	@RequestMapping(value = "/userCourseExam", method = RequestMethod.GET)
+	public String userCourseExam(@ModelAttribute("SpringWeb")User user, 
+			   ModelMap model, HttpServletRequest request) {
 		
 		  int courseId = Integer.parseInt(((ServletRequest) request).getParameter("id")); 
 		  
@@ -201,18 +199,18 @@ public class ExamController
 			
 			model.addAttribute("listExam", listExam);
 		  
-	      return new ModelAndView("loginUser/userCourseExam", "User Course Exam", new ExamSearch());
+	      return "loginUser/userCourseExam";
 	   }
 	
 	// add user
-	@RequestMapping(value = "/loginUser/addUser", method = RequestMethod.GET)
-	public ModelAndView addUser() {
-	      return new ModelAndView("loginUser/addUser", "Add User", new ExamSearch());
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	public String addUser() {
+	      return "loginUser/addUser";
 	   }
 	
 	// add exam
-	@RequestMapping(value = "/loginUser/addExam", method = RequestMethod.GET)
-	public ModelAndView addExam(ModelMap model) {
+	@RequestMapping(value = "/addExam", method = RequestMethod.GET)
+	public String addExam(ModelMap model) {
 		
 		  List<Course> courseList = new ArrayList<Course>();
 		
@@ -220,18 +218,24 @@ public class ExamController
 
           model.addAttribute("loginUser/courseList", courseList);
 		
-	      return new ModelAndView("loginUser/addExam", "Add Exam", new Exam());
+	      return "loginUser/addExam";
 	   }
 	
+	// add create course
+	@RequestMapping(value = "/createCourse", method = RequestMethod.GET)
+	public String createCourse() {
+		      return "loginUser/createCourse";
+		   }
+	
 	// user register page
-	@RequestMapping(value = "/loginUser/userRegister", method = RequestMethod.GET)
-	public ModelAndView userRegister() {
-	      return new ModelAndView("loginUser/userRegister", "User Register", new Exam());
+	@RequestMapping(value = "/userRegister", method = RequestMethod.GET)
+	public String userRegister() {
+	      return "loginUser/userRegister";
 	   }
 	
 	// logout
-	@RequestMapping(value = "/user/logout", method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request, ModelMap model) {
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, ModelMap model) {
 		  
 		  System.out.println("hi");
 		  HttpSession session = request.getSession();  
@@ -245,7 +249,7 @@ public class ExamController
 
           model.addAttribute("courseList", courseList);
           
-	      return new ModelAndView("loginUser/logout", "Logout", new User()); 
+	      return "user/logout"; 
 	   }
 	
 	// search result
@@ -268,7 +272,7 @@ public class ExamController
 	
 	// add user
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ModelAndView addUser(@ModelAttribute("SpringWeb")User user, 
+	public String addUser(@ModelAttribute("SpringWeb")User user, 
 			   ModelMap model, HttpServletRequest request) {   
 		
 		String userName = request.getParameter("userName");
@@ -277,12 +281,12 @@ public class ExamController
 		
 		examDAOImpl.setUser(userName, password, address); 
 		
-		return new ModelAndView("redirect:/");
+		return "redirect:/";
 	}
 	
 	// add exam
 	@RequestMapping(value = "/addExam", method = RequestMethod.POST)
-	public ModelAndView addExam(@ModelAttribute("SpringWeb")Exam exam, 
+	public String addExam(@ModelAttribute("SpringWeb")Exam exam, 
 			   ModelMap model, HttpServletRequest request) {   
 	
 		exam.setCourseId(Integer.parseInt(request.getParameter("courseId")));
@@ -301,7 +305,7 @@ public class ExamController
 		
 		examDAOImpl.setExam(exam); 
 		
-		return new ModelAndView("redirect:/");
+		return "redirect:/";
 	}
 	
 	// user register process data
